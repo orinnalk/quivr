@@ -6,7 +6,7 @@ function log(...args) {
   if (DEBUG) console.log(...args);
 }
 
-serve(async (req: Request) => {
+async function handler(req: Request): Promise<Response> {
   const { origin, href } = new URL(req.url);
 
   const keyword = "captcha";
@@ -32,8 +32,7 @@ serve(async (req: Request) => {
   } else {
     return callback(req);
   }
-
-}, { port: Deno.env.get("PORT") })
+}
 
 async function callback(req: Request) {
   const url = new URL(req.url); 
@@ -47,3 +46,5 @@ async function callback(req: Request) {
     })
   }
 }
+
+serve(handler, { port: Deno.env.get("PORT") })
