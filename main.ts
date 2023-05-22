@@ -24,7 +24,7 @@ serve(async (req: Request) => {
     log(e.message);
   }
   if (['http:', 'https:'].includes(urlObj?.protocol)) {
-    return await fetch(targetUrl.href, {
+    return await fetch(targetUrl, {
       headers: req.headers,
       method: req.method,
       body: req.body
