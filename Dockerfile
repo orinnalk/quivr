@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-RUN apk add curl
+RUN apk add curl ca-certificates
 
 ENV \
     PORT=8080 \
