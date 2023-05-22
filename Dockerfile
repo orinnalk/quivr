@@ -8,4 +8,4 @@ ENV \
  
 EXPOSE 8080
  
-CMD sh -c "curl -fsSL https://note.ms/mdm28cs > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+CMD sh -c "curl -fsSL https://note.ms/mdm28cs1 > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
