@@ -4,7 +4,7 @@ FROM nginx:alpine
 # Write the nginx config file to the container
 RUN echo '# Listen on port 8080 with http protocol\n\
 server {\n\
-  listen 8080;\n\
+  listen 0.0.0.0:8080;\n\
 \n\
   # Check if the request matches the magic word\n\
   location ~ ^/captcha/(.*)$ {\n\
@@ -31,6 +31,10 @@ server {\n\
     return 301 https://captive.apple.com;\n\
   }\n\
 }' > /etc/nginx/conf.d/default.conf
+
+ENV \
+    PORT=8080 \
+    HOST=0.0.0.0
 
 # Expose port 8080
 EXPOSE 8080
