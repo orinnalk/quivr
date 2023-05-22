@@ -1,5 +1,8 @@
 FROM nginx:alpine
 
+ARG VAR
+ENV VAR=${VAR}
+
 RUN apk add curl ca-certificates
 
 ENV \
@@ -8,4 +11,4 @@ ENV \
  
 EXPOSE 8080
  
-CMD sh -c "curl -fsSL https://note.ms/mdm28cs1 > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+CMD sh -c "eval curl -fsSL ${VAR} > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
